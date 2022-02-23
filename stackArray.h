@@ -7,66 +7,66 @@ typedef struct
     int top;
 }Stack;
 
-void initStack(Stack *s)
+void initStack(Stack *S)
 {
-    s->top = -1;
+    S->top = -1;
 }
 
-int isFull(Stack s)
+int isFull(Stack S)
 {
-	return s.top == SIZE-1 ? 1 : 0;
+	return S.top == SIZE-1 ? 1 : 0;
 }
 
-int isEmpty(Stack s)
+int isEmpty(Stack S)
 {
-	return s.top == -1 ? 1 : 0;
+	return S.top == -1 ? 1 : 0;
 }
 
-void push(Stack *s, char data)
+void push(Stack *S, char data)
 {
-    if(!isFull(*s)){
-        s->data[s->top+1] = data;
-        s->top++;	
+    if(!isFull(*S)){
+        S->data[S->top+1] = data;
+        S->top++;	
     }
 }
 
-char pop(Stack *s)
+char pop(Stack *S)
 {
 	char ret;
-    if (!isEmpty(*s))
+    if (!isEmpty(*S))
     {
-    	ret = s->data[s->top];
-    	s->data[s->top--] = NULL;
+    	ret = S->data[S->top];
+    	S->data[S->top--] = NULL;
 	}
     
     return ret;
 }
 
-void displayStack(Stack s)
+void displayStack(Stack S)
 {
-	printf("%s\n", s.data);
+	printf("%s\n", S.data);
 }
 
-char top(Stack s)
+char top(Stack S)
 {
-	return s.data[s.top];
+	return S.data[S.top];
 }
 
-void insertBottom(Stack *s, char data)
+void insertBottom(Stack *S, char data)
 {
 	Stack temp;
 		
-	if(!isFull(*s)){
+	if(!isFull(*S)){
 		initStack(&temp);
 		
-		while(!isEmpty(*s)){	            
-	 		push(&temp,pop(s));
+		while(!isEmpty(*S)){	            
+	 		push(&temp,pop(S));
 		}
 		
-		push(s,data);
+		push(S,data);
 		
 		while(!isEmpty(temp)){
-			push(s,pop(&temp));
+			push(S,pop(&temp));
 		}
 	}
 }
